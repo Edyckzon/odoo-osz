@@ -52,7 +52,22 @@ tmp.write_text('\n'.join(lines) + '\n')
 tmp.chmod(0o600)
 tmp.replace(p)
 PY
-dc up -d --no-deps --wait --wait-timeout 120 odoo
+# The official image declares /mnt/extra-addons as an anonymous volume.
+# Compose otherwise carries its OLD code into a recreated container.
+# PostgreSQL and /var/lib/odoo use named volumes and are preserved by -V.
+dc up -d --no-deps --force-recreate --renew-anon-volumes --wait --wait-timeout 120 odoo
+dc exec -T odoo python3 - <<'PY'
+from pathlib import Path
+from urllib.request import urlopen
+for path in (
+    '/osz_branding/static/img/osz-erp.svg',
+    '/theme_liquid_glass/static/src/js/navbar_sidebar.js',
+):
+    assert Path('/mnt/extra-addons' + path).is_file(), path
+    with urlopen('http://127.0.0.1:8069' + path, timeout=10) as response:
+        assert response.status == 200, path
+print('New theme and logo files are served successfully.')
+PY
 stopped=0
 dc ps
 echo "Liquid Glass and OSZ ERP identity installed. Local backup: $backup"

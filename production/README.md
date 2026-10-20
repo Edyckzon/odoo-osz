@@ -67,3 +67,9 @@ despliegue para diagnosticar; no se intenta revertir solo la imagen.
 Verificar luego: HTTPS/login con logo OSZ, acceso del administrador, menu y
 navegacion a ventas/facturacion, formularios y acceso movil. La comprobacion
 de salud del contenedor no reemplaza esta revision funcional.
+
+La imagen oficial declara `/mnt/extra-addons` como volumen anonimo. Al recrear
+Odoo hay que usar `--renew-anon-volumes`; de lo contrario Compose puede mantener
+codigo de la imagen anterior aunque cambie su etiqueta. `install-theme.sh` lo
+hace y comprueba los archivos nuevos por HTTP antes de anunciar exito. Los
+volumenes de PostgreSQL y `/var/lib/odoo` son nombrados y se conservan.
