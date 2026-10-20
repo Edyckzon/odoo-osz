@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="layout" inherit_id="web.layout" name="OSZ ERP browser title">
+        <xpath expr="//title" position="replace">
+            <title t-esc="(title + ' - OSZ ERP') if title else 'OSZ ERP'"/>
+        </xpath>
+    </template>
+</odoo>
