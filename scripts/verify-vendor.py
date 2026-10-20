@@ -9,7 +9,7 @@ module = root / 'custom-addons' / lock['module']
 actual = {
     path.relative_to(root).as_posix(): hashlib.sha256(
         path.read_bytes().replace(b'\r\n', b'\n')
-        if path.suffix in {'.py', '.js', '.xml', '.scss', '.rst', '.md', '.txt', '.svg'}
+        if path.suffix in {'.py', '.js', '.xml', '.scss', '.rst', '.md', '.txt', '.svg', '.html'}
         else path.read_bytes()
     ).hexdigest()
     for path in module.rglob('*')
