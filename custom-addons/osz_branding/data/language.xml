@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Install official translations without replacing existing user settings. -->
+    <function model="res.lang" name="_activate_and_install_lang">
+        <value eval="[]"/>
+        <value eval="'es_PE'"/>
+    </function>
+</odoo>

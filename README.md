@@ -51,6 +51,10 @@ Ver `third-party/README.md` y `scripts/verify-vendor.py`. El menu propio
 `osz_app_launcher` fue retirado; MuK no forma parte de esta instalacion.
 Los cambios OSZ son logo de acceso/menu, favicon y titulo; no alteran el nombre,
 RUC o logo de `res.company`. Se conserva la atribucion a Odoo en el acceso.
+El pie del acceso agrega "Personalizado por OneSecureZone", enlazado al sitio
+del autor de las personalizaciones. Acceso, registro y recuperacion usan
+espanol de Peru (`es_PE`) con las traducciones oficiales, incluso si el
+navegador solicita ingles. No se modifica el idioma guardado de los usuarios.
 
 Para actualizar el VPS desde la version anterior, despues de CI exitoso:
 

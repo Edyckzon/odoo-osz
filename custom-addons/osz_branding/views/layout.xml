@@ -14,5 +14,13 @@
             <img src="/osz_branding/static/img/osz-erp.svg" alt="OSZ ERP"
                  width="240" height="72" style="max-width:100%;height:auto"/>
         </xpath>
+        <xpath expr="//a[contains(@href, 'www.odoo.com')]" position="after">
+            <div class="mt-2 text-muted" id="osz_customization_credit">
+                Personalizado por
+                <a href="https://onesecurezone.com/" target="_blank"
+                   rel="noopener noreferrer" class="fw-semibold text-decoration-none"
+                   style="color:#087c60">OneSecureZone</a>
+            </div>
+        </xpath>
     </template>
 </odoo>
