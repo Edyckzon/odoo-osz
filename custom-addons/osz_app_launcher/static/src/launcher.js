@@ -77,7 +77,12 @@ patch(NavBar.prototype, {
         this.oszDialog = useService('dialog');
     },
     openOszLauncher() {
+        if (this.oszLauncherClose) {
+            return;
+        }
         this._closeAppMenuSidebar();
-        this.oszDialog.add(OszAppLauncher, {});
+        this.oszLauncherClose = this.oszDialog.add(OszAppLauncher, {}, {
+            onClose: () => { this.oszLauncherClose = null; },
+        });
     },
 });
