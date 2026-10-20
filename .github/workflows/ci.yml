@@ -31,7 +31,7 @@ jobs:
       - name: Start database
         run: docker compose up -d --wait db
       - name: Install branding in a fresh database
-        run: docker compose run --rm -T odoo odoo -d osz_ci -i osz_branding --without-demo=True --stop-after-init --test-enable --test-tags /osz_branding --http-port=8070
+        run: docker compose run --rm -T odoo odoo -d osz_ci -i osz_branding,osz_app_launcher --without-demo=True --stop-after-init --test-enable --test-tags /osz_branding,/osz_app_launcher --http-port=8070
       - name: Validate production configuration and build image
         env:
           POSTGRES_PASSWORD: validation-only
