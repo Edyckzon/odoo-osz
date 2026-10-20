@@ -1,0 +1,10 @@
+# Merge with /opt/grupoaym/compose.yaml; do NOT run this file on its own.
+services:
+  caddy:
+    networks:
+      default:
+      osz_proxy:
+networks:
+  osz_proxy:
+    external: true
+    name: osz_erp_proxy

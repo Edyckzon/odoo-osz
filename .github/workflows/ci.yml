@@ -20,7 +20,10 @@ jobs:
         with:
           persist-credentials: false
       - name: Generate disposable configuration
-        run: python3 scripts/init-local.py
+        run: |
+          python3 scripts/init-local.py
+          # Disposable CI credentials only: container users must read bind mounts.
+          chmod 644 config/odoo.conf postgres-init/01-odoo-role.sql
       - name: Validate Compose and Python
         run: |
           docker compose config --quiet
@@ -28,7 +31,16 @@ jobs:
       - name: Start database
         run: docker compose up -d --wait db
       - name: Install branding in a fresh database
-        run: docker compose run --rm -T odoo odoo -d osz_ci -i osz_branding --without-demo=all --stop-after-init --test-enable --http-port=8070
+        run: docker compose run --rm -T odoo odoo -d osz_ci -i osz_branding --without-demo=True --stop-after-init --test-enable --http-port=8070
+      - name: Validate production configuration and build image
+        env:
+          POSTGRES_PASSWORD: validation-only
+          ODOO_DB_PASSWORD: validation-only
+          OSZ_IMAGE: osz-erp:ci
+        run: |
+          docker compose -f production/compose.yaml config --quiet
+          bash -n production/init-db.sh
+          docker build -t osz-erp:ci .
       - name: Remove disposable CI resources
         if: always()
         run: docker compose down --volumes --remove-orphans

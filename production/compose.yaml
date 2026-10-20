@@ -1,0 +1,61 @@
+name: osz-erp
+x-common: &common
+  restart: unless-stopped
+  security_opt: [no-new-privileges:true]
+  logging:
+    driver: json-file
+    options: {max-size: 10m, max-file: '3'}
+services:
+  db:
+    <<: *common
+    image: postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run prepare.py}
+      ODOO_DB_PASSWORD: ${ODOO_DB_PASSWORD:?Run prepare.py}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/01-odoo.sh:ro
+    networks: [database]
+    mem_limit: 1536m
+    cpus: 1.0
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U postgres -d postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  odoo:
+    <<: *common
+    image: ${OSZ_IMAGE:?Set immutable OSZ image tag}
+    build:
+      context: ..
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: ${ODOO_DB_PASSWORD:?Run prepare.py}
+    volumes:
+      - odoo-data:/var/lib/odoo
+      - ./secrets/odoo.conf:/etc/odoo/odoo.conf:ro
+    networks:
+      database:
+      proxy:
+        aliases: [osz-erp-web]
+    depends_on:
+      db: {condition: service_healthy}
+    mem_limit: 3g
+    cpus: 2.0
+    stop_grace_period: 60s
+    healthcheck:
+      test: [CMD, python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8069/web/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      start_period: 90s
+      retries: 3
+networks:
+  database:
+    internal: true
+  proxy:
+    external: true
+    name: osz_erp_proxy
+volumes:
+  postgres-data:
+  odoo-data:

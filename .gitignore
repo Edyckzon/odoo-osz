@@ -5,3 +5,5 @@ odoo/
 __pycache__/
 *.pyc
 ACCESO-LOCAL.txt
+production/.env
+production/secrets/
