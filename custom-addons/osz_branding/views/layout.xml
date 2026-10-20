@@ -4,5 +4,15 @@
         <xpath expr="//title" position="replace">
             <title t-esc="(title + ' - OSZ ERP') if title else 'OSZ ERP'"/>
         </xpath>
+        <xpath expr="//link[@rel='shortcut icon']" position="attributes">
+            <attribute name="type">image/svg+xml</attribute>
+            <attribute name="t-att-href">'/osz_branding/static/img/favicon.svg'</attribute>
+        </xpath>
+    </template>
+    <template id="login_logo" inherit_id="web.login_layout" name="OSZ ERP product logo">
+        <xpath expr="//img[contains(@t-attf-src, '/web/binary/company_logo')]" position="replace">
+            <img src="/osz_branding/static/img/osz-erp.svg" alt="OSZ ERP"
+                 width="240" height="72" style="max-width:100%;height:auto"/>
+        </xpath>
     </template>
 </odoo>

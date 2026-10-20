@@ -2,7 +2,8 @@
 
 Personalizaciones propias sobre Odoo Community 19. Entorno local con PostgreSQL 16.
 El codigo de Odoo pertenece a sus autores; este repositorio no incluye Enterprise.
-El modulo `osz_branding` declara licencia LGPL-3 y cambia el titulo del navegador.
+El modulo `osz_branding` declara licencia LGPL-3 e integra Liquid Glass con
+el logo y titulo OSZ ERP. La empresa y sus documentos conservan su identidad.
 
 ## Iniciar un clon nuevo
 
@@ -35,11 +36,31 @@ GitHub Actions valida Compose/Python e instala el modulo en una base temporal en
 cada push a main y pull request. La eliminacion de volumenes del workflow solo
 afecta al entorno efimero de CI. El resultado remoto debe comprobarse en Actions.
 
-CD al VPS todavia no esta habilitado. El Compose actual es exclusivamente local;
-no debe publicarse tal cual en Internet. Proximo paso: Compose de produccion,
-imagen OSZ inmutable, red dedicada con Caddy, PostgreSQL interno, secretos en el
-servidor, backup/restauracion verificados y despliegue serializado por release.
+CD al VPS todavia no esta habilitado. `compose.yaml` es exclusivamente local;
+`production/compose.yaml` usa una imagen OSZ, red dedicada con Caddy,
+PostgreSQL interno y secretos en el servidor. Ver `production/README.md`.
 Volver a una imagen anterior no revierte migraciones de base de datos.
 
 Destino previsto: `odoo.grupoaym.com`. La integracion NubeFact/SUNAT aun no esta
 implementada. No se incluyen bases ni datos de empresas.
+
+## Tema y marca del producto
+
+Liquid Glass 19 de Cybrosys esta incluido, fijado a un commit y sin editar.
+Ver `third-party/README.md` y `scripts/verify-vendor.py`. El menu propio
+`osz_app_launcher` fue retirado; MuK no forma parte de esta instalacion.
+Los cambios OSZ son logo de acceso/menu, favicon y titulo; no alteran el nombre,
+RUC o logo de `res.company`. Se conserva la atribucion a Odoo en el acceso.
+
+Para actualizar el VPS desde la version anterior, despues de CI exitoso:
+
+```bash
+cd /opt/osz-erp
+sudo git pull --ff-only && sudo bash production/install-theme.sh
+```
+
+El script respalda base y filestore con Odoo detenido, desinstala el launcher
+usando la imagen anterior, instala Liquid Glass y actualiza `osz_branding`.
+La copia local no sustituye un respaldo externo. Una recuperacion requiere
+restaurar base, filestore y configuracion del mismo respaldo, ademas de la
+imagen anterior. No basta con volver al commit anterior.

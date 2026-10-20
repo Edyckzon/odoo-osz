@@ -28,10 +28,11 @@ jobs:
         run: |
           docker compose config --quiet
           python3 -m compileall -q custom-addons scripts
+          python3 scripts/verify-vendor.py
       - name: Start database
         run: docker compose up -d --wait db
       - name: Install branding in a fresh database
-        run: docker compose run --rm -T odoo odoo -d osz_ci -i osz_branding,osz_app_launcher --without-demo=True --stop-after-init --test-enable --test-tags /osz_branding,/osz_app_launcher --http-port=8070
+        run: docker compose run --rm -T odoo odoo -d osz_ci -i osz_branding --without-demo=True --stop-after-init --test-enable --test-tags /osz_branding --http-port=8070
       - name: Validate production configuration and build image
         env:
           POSTGRES_PASSWORD: validation-only
@@ -40,6 +41,7 @@ jobs:
         run: |
           docker compose -f production/compose.yaml config --quiet
           bash -n production/init-db.sh
+          bash -n production/install-theme.sh
           docker build -t osz-erp:ci .
       - name: Remove disposable CI resources
         if: always()
