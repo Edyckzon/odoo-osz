@@ -14,7 +14,7 @@ for lock_path in sorted((root / 'third-party').glob('*.lock.json')):
             if not path.is_file() or '__pycache__' in path.parts or path.suffix == '.pyc':
                 continue
             data = path.read_bytes()
-            if path.suffix in extensions:
+            if path.suffix in extensions or path.name in lock.get('text_filenames', []):
                 data = data.replace(b'\r\n', b'\n')
             actual[path.relative_to(root).as_posix()] = hashlib.sha256(data).hexdigest()
     if actual != lock['sha256']:

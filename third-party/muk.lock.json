@@ -12,7 +12,7 @@
     "muk_web_group": "19.0.1.0.8"
   },
   "sha256": {
-    "custom-addons/muk_web_theme/LICENSE": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "custom-addons/muk_web_theme/LICENSE": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "custom-addons/muk_web_theme/README.md": "487d3b8b552e34045df44335555f9761f159be6a054f1ccf02c704596d97c1e2",
     "custom-addons/muk_web_theme/__init__.py": "97151f597353e1f8459aecab558584721698cf75927922d29205a437216b1857",
     "custom-addons/muk_web_theme/__manifest__.py": "e6419a6890f5b5127f31c9b15b75fe8645f3ae1071203a77f5ae7c0b465a2bf8",
@@ -64,7 +64,7 @@
     "custom-addons/muk_web_theme/static/src/webclient/navbar/navbar.js": "dd64469504e2cc5f6be13ef859c54dc0e3d973e5ad57e382af4a4821f0e492e5",
     "custom-addons/muk_web_theme/static/src/webclient/navbar/navbar.scss": "01bf9e80f8d7c903ffaf8c3fe48d2287b6eb9b214697ccdf7eff45baeeeac3a0",
     "custom-addons/muk_web_theme/static/src/webclient/navbar/navbar.xml": "09639a8110e9a6bfd11a7f69aa7393fc1ca3f9842b5a0f0aea368db467ca5c5a",
-    "custom-addons/muk_web_refresh/LICENSE": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "custom-addons/muk_web_refresh/LICENSE": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "custom-addons/muk_web_refresh/README.md": "02687a0354ea713db76549cb41caebbd8c7a5c463122635307a7c5c804442802",
     "custom-addons/muk_web_refresh/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
     "custom-addons/muk_web_refresh/__manifest__.py": "b68736c546e8bac38da8dbe8cc3d451ed8c3c9ce508828af4cd7bafde70f559e",
@@ -104,7 +104,7 @@
     "custom-addons/muk_web_refresh/static/src/search/control_panel.js": "93b6bd07e7f2589cf3f3e43d8daad6ede23096db12008dbf97b553634a675fd4",
     "custom-addons/muk_web_refresh/static/src/search/control_panel.xml": "b4e85da6c8088d694d8ed1ecd67e0fbed18ed2bf4c9377450427cb2b96631632",
     "custom-addons/muk_web_refresh/static/src/services/refresh_service.js": "a0e830c2addfc5c08e85d02a13b118860d6bb68d1fe19a2e4d7a6bbbe5841dd0",
-    "custom-addons/muk_web_colors/LICENSE": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "custom-addons/muk_web_colors/LICENSE": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "custom-addons/muk_web_colors/README.md": "852634400b9730a561b631a2b297ac4c475de7bff8a268fb095a36c8ca25c90a",
     "custom-addons/muk_web_colors/__init__.py": "ba33b2ec2a9de64d2e6d55c995258678ef2a2637c8e04cedfbbc586e4de12d4e",
     "custom-addons/muk_web_colors/__manifest__.py": "37f4bec6e1a150ccc38ca34372f2f6c25c08b89c328fb7163c7a760368928fee",
@@ -138,7 +138,7 @@
     "custom-addons/muk_web_colors/static/src/scss/colors.scss": "6316b76649a26b31f254c092c9a67c1412385ea86128f2db94ca4765706e4131",
     "custom-addons/muk_web_colors/static/src/scss/colors_dark.scss": "30101c0d2d3bdd3e6acab688ff92b193afc0def2cd8695a8b54c7901e5ee70e2",
     "custom-addons/muk_web_colors/static/src/scss/colors_light.scss": "3e756d00c19504dc03c0cf2ce2b6c6e906dca89d8a8b934bb28804468dd28cfb",
-    "custom-addons/muk_web_appsbar/LICENSE": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "custom-addons/muk_web_appsbar/LICENSE": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "custom-addons/muk_web_appsbar/README.md": "8d444e2bb4ba434caf8a94acbc9862fe5d3929366fd62515408998c1139bfaba",
     "custom-addons/muk_web_appsbar/__init__.py": "d3c297505852b77ce0c4252400a4aaab57bcce58567bdf42933610d8a7e195f3",
     "custom-addons/muk_web_appsbar/__manifest__.py": "e6638a8b0186a4e53a792f233d43a51f686d2074f5e377bb80c7233a6efa9a61",
@@ -187,7 +187,7 @@
     "custom-addons/muk_web_appsbar/static/src/webclient/appsbar/appsbar.xml": "c779af8492f69114e14513d9517bf661d6b33781616deea5d6d67b9a109380dd",
     "custom-addons/muk_web_appsbar/static/src/webclient/menus/app_menu_service.js": "fba25e92cbfa44609f90c00f094e1a1ae4ea0ea03c727013f0cc140a29a2456a",
     "custom-addons/muk_web_appsbar/static/tests/helpers/app_menu.js": "ca1688610ffbceea841a1ea3816cccca864a13e7eb237aeade78743c0fd72ccf",
-    "custom-addons/muk_web_dialog/LICENSE": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "custom-addons/muk_web_dialog/LICENSE": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "custom-addons/muk_web_dialog/README.md": "4b78e1a2061ecda78ff31e3da1471438f6f840c779ed5384b84e3c377970c9cf",
     "custom-addons/muk_web_dialog/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
     "custom-addons/muk_web_dialog/__manifest__.py": "996a5e0001f98e1321dfed95a2496cdebf8315cd35cb3fc42d171be03e3757d3",
@@ -225,7 +225,7 @@
     "custom-addons/muk_web_dialog/static/src/core/dialog/dialog.scss": "6a966e0b7104ef3190680a456ad53f5e86d876c67c8c1d2e25c3afe507f31f33",
     "custom-addons/muk_web_dialog/static/src/core/dialog/dialog.xml": "d96b12ca98d3d329ae666ab81d486e4295da6894285df4dd776a596b3c9929d7",
     "custom-addons/muk_web_dialog/static/src/views/view_dialogs/select_create_dialog.js": "602904c0c441968bf752b376a2a636b6707c10e62f0fdcdac6e61d3fe81104ce",
-    "custom-addons/muk_web_chatter/LICENSE": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "custom-addons/muk_web_chatter/LICENSE": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "custom-addons/muk_web_chatter/README.md": "6d8f33a839dd2fc1b4736b20b267310bada2766ff67692aee9950479944b1d00",
     "custom-addons/muk_web_chatter/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
     "custom-addons/muk_web_chatter/__manifest__.py": "aa80225eed69b5a8c7831394f962e14c096e4b3c4df7054eead089539cffad5d",
@@ -280,7 +280,7 @@
     "custom-addons/muk_web_chatter/static/src/core/thread/thread.xml": "42bd6a1d273a2215f8079f59c059c8521e0b124a4e69f0bcbf4bcbb16f9d8dba",
     "custom-addons/muk_web_chatter/static/src/views/form/form_compiler.js": "383cf3bd74b32a11d72c4bb6c17d888ef69d1709c38acaf56782020f42f22a9b",
     "custom-addons/muk_web_chatter/static/src/views/form/form_renderer.js": "ec6953ae1cd56c0effc90a1fb025f42bd1a9d2d000fdbcb4777acae26ec6f5d3",
-    "custom-addons/muk_web_group/LICENSE": "7d3a95e5e06978064ed3f8e2b7c8f845e7fd8a405294727cc708f94cb83b8059",
+    "custom-addons/muk_web_group/LICENSE": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
     "custom-addons/muk_web_group/README.md": "523cdde6e25c396a21ab77d156a777f08c7d40d84d868faa88ca8678843f005d",
     "custom-addons/muk_web_group/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "custom-addons/muk_web_group/__manifest__.py": "7c7c9a475898543ab5ff594b739e5030a7390803f41828d6f6836b084a0915ea",
@@ -326,5 +326,8 @@
     ".svg",
     ".txt",
     ".xml"
+  ],
+  "text_filenames": [
+    "LICENSE"
   ]
 }
