@@ -2,7 +2,7 @@
 
 Personalizaciones propias sobre Odoo Community 19. Entorno local con PostgreSQL 16.
 El codigo de Odoo pertenece a sus autores; este repositorio no incluye Enterprise.
-El modulo `osz_branding` declara licencia LGPL-3 e integra Liquid Glass con
+El modulo `osz_branding` declara licencia LGPL-3 e integra MuK con
 el logo y titulo OSZ ERP. La empresa y sus documentos conservan su identidad.
 
 ## Iniciar un clon nuevo
@@ -46,9 +46,11 @@ implementada. No se incluyen bases ni datos de empresas.
 
 ## Tema y marca del producto
 
-Liquid Glass 19 de Cybrosys esta incluido, fijado a un commit y sin editar.
+MuK Backend Theme 19 de MuK IT y sus seis dependencias estan incluidos,
+fijados a un commit y sin editar.
 Ver `third-party/README.md` y `scripts/verify-vendor.py`. El menu propio
-`osz_app_launcher` fue retirado; MuK no forma parte de esta instalacion.
+`osz_app_launcher` fue retirado. Liquid Glass se conserva solo para poder
+desinstalarlo durante la migracion; no debe activarse junto a MuK.
 Los cambios OSZ son logo de acceso/menu, favicon y titulo; no alteran el nombre,
 RUC o logo de `res.company`. Se conserva la atribucion a Odoo en el acceso.
 El pie del acceso agrega "Personalizado por OneSecureZone", enlazado al sitio
@@ -64,7 +66,9 @@ sudo git pull --ff-only && sudo bash production/install-theme.sh
 ```
 
 El script respalda base y filestore con Odoo detenido, desinstala el launcher
-usando la imagen anterior, instala Liquid Glass y actualiza `osz_branding`.
+usando la imagen anterior, instala MuK y actualiza `osz_branding`. Solo despues
+de actualizar sus dependencias desinstala Liquid Glass, evitando retirar la marca
+por cascada. El servidor web permanece detenido durante la transicion.
 La copia local no sustituye un respaldo externo. Una recuperacion requiere
 restaurar base, filestore y configuracion del mismo respaldo, ademas de la
 imagen anterior. No basta con volver al commit anterior.

@@ -13,7 +13,7 @@ OSZ_IMAGE="$candidate" dc build odoo
 dc exec -T db pg_isready -U postgres -d osz_erp
 
 umask 077
-backup="/opt/backups/osz-erp/$(date -u +%Y%m%dT%H%M%SZ)-liquid-glass"
+backup="/opt/backups/osz-erp/$(date -u +%Y%m%dT%H%M%SZ)-muk"
 mkdir -p "$backup"
 chmod 700 "$backup"
 cp production/.env "$backup/production.env"
@@ -36,8 +36,20 @@ if m:
 env.cr.commit()
 PYTHON
 OSZ_IMAGE="$candidate" dc run --rm -T --no-deps odoo odoo \
-    -d osz_erp -i theme_liquid_glass -u osz_branding --without-demo=True --stop-after-init \
+    -d osz_erp -i muk_web_theme -u osz_branding --without-demo=True --stop-after-init \
     --no-http --workers=0 --max-cron-threads=0
+
+# Refresh branding dependencies BEFORE uninstalling the former theme.
+OSZ_IMAGE="$candidate" dc run --rm -T --no-deps odoo odoo shell -d osz_erp --no-http --workers=0 --max-cron-threads=0 <<'PYTHON'
+old = env['ir.module.module'].search([('name', '=', 'theme_liquid_glass'), ('state', '=', 'installed')])
+if old:
+    dependents = env['ir.module.module'].search([('state', '=', 'installed'), ('dependencies_id.name', '=', 'theme_liquid_glass')])
+    assert not dependents, 'Liquid Glass still required by: ' + ', '.join(dependents.mapped('name'))
+    old.button_immediate_uninstall()
+for name in ('osz_branding', 'muk_web_theme'):
+    assert env['ir.module.module'].search([('name', '=', name)]).state == 'installed', name
+env.cr.commit()
+PYTHON
 
 # Persist the selected image only after successful module installation.
 export OSZ_CANDIDATE_IMAGE="$candidate"
@@ -61,7 +73,7 @@ from pathlib import Path
 from urllib.request import urlopen
 for path in (
     '/osz_branding/static/img/osz-erp.svg',
-    '/theme_liquid_glass/static/src/js/navbar_sidebar.js',
+    '/muk_web_theme/static/src/webclient/navbar/navbar.js',
 ):
     assert Path('/mnt/extra-addons' + path).is_file(), path
     with urlopen('http://127.0.0.1:8069' + path, timeout=10) as response:
@@ -70,5 +82,5 @@ print('New theme and logo files are served successfully.')
 PY
 stopped=0
 dc ps
-echo "Liquid Glass and OSZ ERP identity installed. Local backup: $backup"
+echo "MuK and OSZ ERP identity installed. Local backup: $backup"
 echo 'Refresh the browser and click the applications menu. This backup is not an off-site backup.'

@@ -53,13 +53,16 @@ No ejecutar down --volumes sobre datos persistentes. No usar el Compose local
 para produccion. La imagen osz-erp:<commit> es una etiqueta local inicial;
 el pipeline de publicacion GHCR todavia no esta implementado.
 
-## Migracion a Liquid Glass + OSZ ERP
+## Migracion a MuK 19 + OSZ ERP
 
 Tras comprobar CI: `sudo git pull --ff-only && sudo bash production/install-theme.sh`
 desde `/opt/osz-erp`. La migracion reconstruye la imagen y hace un respaldo
 consistente (base + filestore + secretos) antes de cambiar los modulos.
 Retira el antiguo launcher si esta instalado usando la imagen anterior, luego
-instala Liquid Glass y actualiza la identidad OSZ. No modifica Caddy, DNS ni VPN.
+instala MuK 19 y actualiza la identidad OSZ. Desinstala Liquid Glass despues
+de verificar que ningun modulo instalado dependa de el. La fuente antigua
+se retiene para esta transicion; ambos temas no deben estar activos al arrancar
+el servidor web. No modifica Caddy, DNS ni VPN.
 Existe una breve ventana sin servicio mientras se migran los modulos.
 Ante un error despues de detener Odoo, se conserva el respaldo y se detiene el
 despliegue para diagnosticar; no se intenta revertir solo la imagen.

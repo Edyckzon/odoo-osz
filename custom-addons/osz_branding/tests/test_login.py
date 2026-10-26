@@ -21,7 +21,7 @@ class TestBrandedLogin(HttpCase):
         self.assertTrue(page.xpath('//div[@id="osz_customization_credit"]/a[@href="https://onesecurezone.com/"]'))
         self.assertIn('Personalizado por', page.text_content())
 
-    def test_liquid_glass_backend_assets(self):
+    def test_muk_backend_assets(self):
         self.authenticate('admin', 'admin')
         page = html.fromstring(self.url_open('/odoo').content)
         urls = page.xpath('//link[@rel="stylesheet" and contains(@href, "/web/assets/")]/@href')
@@ -32,6 +32,7 @@ class TestBrandedLogin(HttpCase):
             self.assertEqual(response.status_code, 200)
             css += response.text
         self.assertNotIn('A css error', css)
-        self.assertIn('.o_apps_sidebar', css)
+        self.assertIn('.mk_apps_sidebar', css)
+        self.assertNotIn('.o_apps_sidebar', css)
         self.assertNotIn('.osz-launcher-dialog', css)
-        self.assertEqual(self.env['ir.module.module'].search([('name', '=', 'theme_liquid_glass')]).state, 'installed')
+        self.assertEqual(self.env['ir.module.module'].search([('name', '=', 'muk_web_theme')]).state, 'installed')
